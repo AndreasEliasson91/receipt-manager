@@ -1,0 +1,2 @@
+class TransactionRegister:
+    pass
