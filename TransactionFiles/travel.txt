@@ -1,4 +1,4 @@
-000102 Food Person1 100.0 2 Person2 Person4
-010203 Rent Person4 1000.0 3 Person1 Person2 Person3
-020304 Food Person2 250.0 3 Person1 Person3 Person4
-030405 Trip Person1 20.0 1 Person3
+000102  Food    Person1 100.0   2   Person2 Person4
+010203  Rent    Person4 1000.0  3   Person1 Person2 Person3
+020304  Food    Person2 250.0   3   Person1 Person3 Person4
+030405  Trip    Person1 20.0    1   Person3
