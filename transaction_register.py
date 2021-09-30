@@ -8,6 +8,9 @@ class TransactionRegister:
         self.__num_of_transactions = 0
         self.__transactions = []
 
+    def get_number_of_transactions(self):
+        return self.__num_of_transactions
+
     def print(self):
         """
         Print the transactions in certain format
@@ -17,16 +20,11 @@ class TransactionRegister:
         for i in range(self.__num_of_transactions):
             self.__transactions[i].print()
 
-    def read(self):
+    def read(self, file):
         """
         Reads the file containing the transactions.
         Then creates objects of the Transaction class from each transaction, and appends them to self.__transactions.
         """
-        # file_name = input("Enter the name of the file: ")
-        file_name = "travel.txt"
-        with open("./TransactionFiles/" + file_name, "r", encoding="utf-8") as in_file:
-            file = in_file.readlines()
-
         for line in file:
             line = line.split()
             t = Transaction(line[0], line[1], line[2], float(line[3]), int(line[4]))
@@ -37,8 +35,8 @@ class TransactionRegister:
 
     def add_transaction(self, t: Transaction):
         """
-        Append a transaction to the register and increment the total number of transactions in it
-        :param t: The transaction to append
+        Append a Transaction object to the register and increment the total number of transactions in it
+        :param t: The Transaction object to append
         """
         self.__transactions.append(t)
         self.__num_of_transactions += 1
@@ -87,6 +85,9 @@ class TransactionRegister:
             if not temp_list.find_person(self.__transactions[i].get_name()):
                 n = self.__transactions[i].get_name()
                 person = Person(n, self.amount_paid(n), self.debt(n))
-                temp_list.add(person)
+                temp_list.add_person(person)
         return temp_list
 
+    def write(self, in_file: str):
+        with open("./TransactionFiles/" + in_file, "w", encoding="utf-8") as out_file:
+            out_file.writelines([self.__transactions[i] for i in range(self.__num_of_transactions)])

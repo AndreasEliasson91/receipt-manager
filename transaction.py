@@ -33,6 +33,11 @@ class Transaction:
             self.persons.append(input())
 
     def find_person(self, name: str) -> bool:
+        """
+        Function to search the list of names involved in the transaction after a pre-determent name
+        :param name: Name to search for
+        :return: True if the name is found else False
+        """
         for i in range(self.__num_of_persons):
             if self.persons[i] == name:
                 return True

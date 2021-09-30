@@ -4,18 +4,23 @@ from transaction_register import TransactionRegister
 
 
 def main():
+    # file_name = input("Enter the name of the file: ")
+    file_name = "travel.txt"
+    with open("./TransactionFiles/" + file_name, "r", encoding="utf-8") as in_file:
+        file = in_file.readlines()
     transaction_register = TransactionRegister()
-    transaction_register.read()
+    transaction_register.read(file)
 
     while True:
-        print("============\n\tMENU\n============\n\n0. Quit and save transactions to a file\n1 Print information about"
-              " the transactions in the file\n2. Read a transaction from input\n3. Calculate the total cost\n"
-              "4. Calculate a certain persons debt\n5. Calculate a certain persons total amount paid\n"
-              "6. List all persons and fix\n")
+        print("============\n\tMENU\n============\n\n0. Quit and save transactions to a file\n"
+              "1. Print information about the transactions in the file\n2. Read a transaction from input\n"
+              "3. Calculate the total cost\n4. Calculate a certain persons debt\n"
+              "5. Calculate a certain persons total amount paid\n6. List all persons and fix\n")
         option = int(input("Choose an option from the menu: "))
         print()
 
         if option == 0:
+            transaction_register.write(file_name)
             break
         elif option == 1:
             transaction_register.print()
